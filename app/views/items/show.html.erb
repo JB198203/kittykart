@@ -1,24 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @item.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<p>
-  <strong>Image url:</strong>
-  <%= @item.image_url %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div style="height:80vh">
+<div class="card" style="width: 20rem;">
+  <img src=<%= @item.image_url %> class="card-img-top" alt="...">
+ 
+  <div class="card-body">
+    <h5 class="card-title"><%= @item.title %></h5>
+    <p class="card-text"><%= @item.description %></p>
+    <p class="card-text"><%= @item.price %></p>
+    <%= link_to "Add to cart", new_cart_path, class: "btn btn-primary" %>
+	<% if !!current_user %>
+	<%= button_to "Ajouter au panier", user_cart_path(current_user.cart.id), method: "put", params: { :item_id => @item.id } %>
+	<% end %>
+  </div>
+</div>
+</div>
