@@ -1,11 +1,11 @@
 <div style="height:80vh">
-<div class="card" style="width: 20rem;">
-  <img src=<%= @item.image_url %> class="card-img-top" alt="...">
+<div class="card" style="width: 40rem;">
+<%= image_tag ("cat_card.jpg") %>
  
   <div class="card-body">
     <h5 class="card-title"><%= @item.title %></h5>
     <p class="card-text"><%= @item.description %></p>
-    <p class="card-text"><%= @item.price %></p>
+    <p class="card-text">Price : $<%= @item.price %></p>
     <%= link_to "Add to cart", new_cart_path, class: "btn btn-primary" %>
 	<% if !!current_user %>
 	<%= button_to "Ajouter au panier", user_cart_path(current_user.cart.id), method: "put", params: { :item_id => @item.id } %>
